@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"strings"
 
-	topKFrequent "github.com/Md-Hasib-Askari/leetcode-solutions/arrays_hashing"
+	longestConsecutive "github.com/Md-Hasib-Askari/leetcode-solutions/arrays_hashing"
 )
 
 func main() {
@@ -33,23 +33,18 @@ func main() {
 		a[i], _ = strconv.Atoi(ainp[i])
 	}
 
-	kstr, _ := reader.ReadString('\n')
-	kstr = strings.TrimSpace(kstr)
-	k, _ := strconv.Atoi(kstr)
-
 	// Solve problem here
-	result := solve(a, k)
+	result := solve(a)
 
 	// Print output
 	fmt.Fprintln(writer, result)
 	// }
 }
 
-func solve(nums []int, k int) []int {
+func solve(nums []int) int {
 	// Solve problem here
 
 	fmt.Println("nums: ", nums)
-	fmt.Println("k: ", k)
-	res := topKFrequent.TopKFrequent_n(nums, k)
+	res := longestConsecutive.LongestConsecutive(nums)
 	return res
 }
