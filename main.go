@@ -4,10 +4,9 @@ import (
 	"bufio"
 	"fmt"
 	"os"
-	"strconv"
 	"strings"
 
-	longestConsecutive "github.com/Md-Hasib-Askari/leetcode-solutions/arrays_hashing"
+	two_pointers "github.com/Md-Hasib-Askari/leetcode-solutions/two_pointers"
 )
 
 func main() {
@@ -27,24 +26,23 @@ func main() {
 
 	astr, _ := reader.ReadString('\n')
 	astr = strings.TrimSpace(astr)
-	ainp := strings.Fields(astr)
-	a := make([]int, len(ainp))
-	for i := 0; i < len(ainp); i++ {
-		a[i], _ = strconv.Atoi(ainp[i])
-	}
+	// ainp := strings.Fields(astr)
+	// a := make([]int, len(ainp))
+	// for i := 0; i < len(ainp); i++ {
+	// 	a[i], _ = strconv.Atoi(ainp[i])
+	// }
 
 	// Solve problem here
-	result := solve(a)
+	result := solve(astr)
 
 	// Print output
 	fmt.Fprintln(writer, result)
 	// }
 }
 
-func solve(nums []int) int {
+func solve(s string) bool {
 	// Solve problem here
 
-	fmt.Println("nums: ", nums)
-	res := longestConsecutive.LongestConsecutive(nums)
+	res := two_pointers.IsValidPalindrome(s)
 	return res
 }
