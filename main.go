@@ -1,10 +1,5 @@
 package main
 
-import (
-	"bufio"
-	"os"
-)
-
 func main() {
 	// Input
 	// a,  := input()
@@ -18,8 +13,8 @@ func main() {
 	// fmt.Fprintln(writer, result)
 }
 
-func input() []int {
-	bufio.NewReader(os.Stdin)
+func input() {
+	// bufio.NewReader(os.Stdin)
 
 	// Read number of test cases
 	// tStr, _ := reader.ReadString('\n')
