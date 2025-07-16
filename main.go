@@ -2,7 +2,7 @@ package main
 
 func main() {
 	// Input
-	// a,  := input()
+	input()
 
 	// Solve problem here
 	solve()
@@ -47,7 +47,7 @@ func input() {
 	// }
 }
 
-func solve() []int {
+func solve() {
 	// Solve problem here
 	// numbers := []int{-1, 0}
 	// target := -1
