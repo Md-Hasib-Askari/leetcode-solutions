@@ -2,10 +2,7 @@ package main
 
 import (
 	"bufio"
-	"fmt"
 	"os"
-
-	threeSum "github.com/Md-Hasib-Askari/leetcode-solutions/two_pointers"
 )
 
 func main() {
@@ -22,7 +19,7 @@ func main() {
 }
 
 func input() []int {
-	reader := bufio.NewReader(os.Stdin)
+	bufio.NewReader(os.Stdin)
 
 	// Read number of test cases
 	// tStr, _ := reader.ReadString('\n')
@@ -46,23 +43,23 @@ func input() []int {
 	// targetStr = strings.TrimSpace(targetStr)
 	// target, _ := strconv.Atoi(targetStr)
 
-	return a
+	// return a
 	// Solve problem here
-	result := solve()
+	// result := solve()
 
 	// Print output
-	fmt.Fprintln(writer, result)
+	// fmt.Fprintln(writer, result)
 	// }
 }
 
 func solve() []int {
 	// Solve problem here
-	numbers := []int{-1, 0}
-	target := -1
-	result := two_pointers.TwoSum(numbers, target)
+	// numbers := []int{-1, 0}
+	// target := -1
+	// result := two_pointers.TwoSum(numbers, target)
 
-	return result
+	// return result
 
-	res := threeSum.ThreeSum(inp)
-	fmt.Println(res)
+	// res := threeSum.ThreeSum(inp)
+	// fmt.Println(res)
 }
