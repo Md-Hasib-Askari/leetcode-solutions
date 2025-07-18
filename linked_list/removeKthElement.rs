@@ -57,21 +57,3 @@ fn print_list(head: &Box<ListNode>) {
     }
     println!("None");
 }
-
-fn main() {
-    let mut head = Box::new(ListNode::new(1));
-    let mut n2 = Box::new(ListNode::new(2));
-    let mut n3 = Box::new(ListNode::new(3));
-    let mut n4 = Box::new(ListNode::new(4));
-    let n5 = Box::new(ListNode::new(5));
-
-    n4.next = Some(n5);
-    n3.next = Some(n4);
-    n2.next = Some(n3);
-    head.next = Some(n2);
-
-    let n = 2;
-    print_list(&head);
-    let new_head = remove_nth_from_end(Some(head), n);
-    print_list(&new_head.unwrap());
-}
