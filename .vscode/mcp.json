@@ -1,0 +1,39 @@
+{
+    "servers": {
+        "time": {
+            "command": "docker",
+            "args": [
+                "run",
+                "-i",
+                "--rm",
+                "mcp/time"
+            ],
+            "type": "stdio"
+        },
+        "filesystem": {
+            "command": "docker",
+            "args": [
+                "run",
+                "-i",
+                "--rm",
+                "--mount",
+                "type=bind,src=${workspaceFolder},dst=/projects/workspace",
+                "mcp/filesystem",
+                "/projects"
+            ]
+        },
+        "currency-converter": {
+            "command": "docker",
+            "args": [
+                "run",
+                "-i",
+                "--rm",
+                "mcp/currency-converter"
+            ],
+            "env": {
+                "UV_INDEX": ""
+            }
+        }
+    },
+    "inputs": []
+}

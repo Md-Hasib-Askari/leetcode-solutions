@@ -1,18 +1,15 @@
 // Definition for singly-linked list.
 #[derive(PartialEq, Eq, Clone, Debug)]
 pub struct ListNode {
-  pub val: i32,
-  pub next: Option<Box<ListNode>>
+    pub val: i32,
+    pub next: Option<Box<ListNode>>,
 }
-// 
+//
 impl ListNode {
-  #[inline]
-  fn new(val: i32) -> Self {
-    ListNode {
-      next: None,
-      val
+    #[inline]
+    fn new(val: i32) -> Self {
+        ListNode { next: None, val }
     }
-  }
 }
 
 fn remove_nth_from_end(head: Option<Box<ListNode>>, n: i32) -> Option<Box<ListNode>> {
@@ -21,7 +18,7 @@ fn remove_nth_from_end(head: Option<Box<ListNode>>, n: i32) -> Option<Box<ListNo
 
     let mut count = 0;
     let mut current = temp.next.as_ref();
-    
+
     // Move front pointer n steps ahead
     for _ in 0..n {
         if let Some(node) = current {
@@ -30,8 +27,8 @@ fn remove_nth_from_end(head: Option<Box<ListNode>>, n: i32) -> Option<Box<ListNo
     }
 
     while let Some(node) = current {
-      current = node.next.as_ref();
-      count = count + 1;
+        current = node.next.as_ref();
+        count = count + 1;
     }
 
     let mut trailer = temp.as_mut();
