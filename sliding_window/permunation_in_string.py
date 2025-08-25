@@ -8,6 +8,11 @@ def compare_str(c1: dict, s2: str) -> bool:
     return c1 == c2
 
 def solve(s1: str, s2: str) -> bool:
+    """
+        Check if any permutation of s1 is a substring of s2.
+        Window size will always be fixed for this problem.
+    """
+
     res = False
     n1 = len(s1)
     n2 = len(s2)
