@@ -31,7 +31,43 @@ def solve(s1: str, s2: str) -> bool:
         r += 1
     return res
 
+def solve_optimal(s1: str, s2: str) -> bool:
+    n1 = len(s1)
+    n2 = len(s2)
+    matches = 0
+
+    c1, c2 = [0] * 26 , [0] * 26
+
+    for i in range(n1):
+        c1[ord(s1[i]) - ord('a')] += 1
+        c2[ord(s2[i]) - ord('a')] += 1
+
+    for i in range(26):
+        if c1[i] == c2[i]:
+            matches += 1
+
+    l = 0
+    for r in range(n1, n2):
+        # add new character
+        idx = ord(s2[r]) - ord('a')
+        c2[idx] += 1
+        if c1[idx] == c2[idx]:
+            matches += 1
+        elif c1[idx] == c2[idx] - 1:
+            matches -= 1
+
+        # remove leftmost character
+        idx = ord(s2[l]) - ord('a')
+        c2[idx] -= 1
+        if c1[idx] == c2[idx]:
+            matches += 1
+        elif c1[idx] == c2[idx] + 1:
+            matches -= 1
+        l += 1
+
+    return matches == 26
+
 if __name__ == "__main__":
     s1 = "ab"
-    s2 = "eidboaoo"
-    print(solve(s1, s2))
+    s2 = "eidbaooo"
+    print(solve_optimal(s1, s2))
