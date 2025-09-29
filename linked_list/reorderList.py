@@ -10,48 +10,30 @@ class Solution:
         if not head:
             return None
         
-        r_head = ListNode(head.val)
-        c1 = head.next
-        c2 = r_head
-        n = 1
-
-        while c1:
-            c2.next = ListNode(c1.val)
-            c1 = c1.next
-            c2 = c2.next
-            n += 1
-
-        a, b = None, r_head
-        c = None
-        if r_head and r_head.next:
-            c = r_head.next
-        while b:
-            c = b.next
-            b.next = a
-            a = b
-            b = c
-        r_head = a
-
-        curr = head
-        a = head
-        b = r_head
-        i = 0
-        while i < n // 2:
-            a = a.next
-            curr.next = b
-            curr = curr.next
-
-            if i == n // 2 - 1 and n % 2 == 0:
+        # Find the middle of the linked list
+        slow, fast = head, head
+        while fast and fast.next:
+            if not slow:
                 break
+            slow = slow.next
+            fast = fast.next.next
+    
+        # Reverse the second half
+        second_half = slow.next
+        prev = slow.next = None
+        while second_half:
+            tmp = second_half.next
+            second_half.next = prev
+            prev = second_half
+            second_half = tmp
 
-            b = b.next
-            curr.next = a
-            curr = curr.next
-
-            i += 1
-
-        curr.next = None
-
+        # Merge the two halves
+        first, second = head, prev
+        while second:
+            tmp1, tmp2 = first.next, second.next
+            first.next = second
+            second.next = tmp1
+            first, second = tmp1, tmp2
 
 if __name__ == '__main__':
     tests = [
