@@ -23,8 +23,8 @@ def solve(p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
     traversal(p, p_nodes)
     traversal(q, q_nodes)
 
-    print(p_nodes)
-    print(q_nodes)
+    # print(p_nodes)
+    # print(q_nodes)
 
     if len(p_nodes) != len(q_nodes):
         return False
@@ -34,6 +34,16 @@ def solve(p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
             return False
     
     return True 
+
+# dfs approach (alternative)
+def solve_dfs(p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+    if not p and not q:
+        return True
+    if not p or not q:
+        return False
+    if p.val != q.val:
+        return False
+    return solve_dfs(p.left, q.left) and solve_dfs(p.right, q.right)
 
 if __name__ == "__main__":
     p1 = TreeNode(1)
