@@ -1,11 +1,9 @@
-5
-7
-humitsa mitsuha
 4
-orhi hori
-6
-aakima makima
-6
-nezuqo nezuko
-6
-misaka mikasa
+1
+1
+4
+6 6 12 12
+3
+24 120 210
+4
+2 4 6 10
