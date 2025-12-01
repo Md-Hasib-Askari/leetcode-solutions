@@ -16,11 +16,21 @@ from itertools import combinations, permutations, accumulate
 from math import gcd, sqrt, ceil, floor
 import heapq
 
-input = sys.stdin.readline
+input = sys.stdin.readline # fast input
+print = sys.stdout.write    # fast output (remember to add '\n')
 
 # ===== Utilities =====
 INF = 10 ** 18
 MOD = 10 ** 9 + 7
+
+PRIMES_60 = [  
+    2, 3, 5, 7, 11, 13, 17, 19, 23, 29,
+    31, 37, 41, 43, 47, 53, 59, 61, 67, 71,
+    73, 79, 83, 89, 97, 101, 103, 107, 109, 113,
+    127, 131, 137, 139, 149, 151, 157, 163, 167, 173,
+    179, 181, 191, 193, 197, 199, 211, 223, 227, 229,
+    233, 239, 241, 251, 257, 263, 269, 271, 277, 281
+]
 
 # Fast power (a^e mod m)
 def mod_pow(a: int, e: int, m: int = MOD) -> int:
