@@ -1,30 +1,30 @@
 def solve(numCourses: int, prerequisites: list[list[int]]) -> bool:
-    graph = [[0]*numCourses for _ in range(numCourses)]
-    visited = [False]*numCourses
+    # Map each course to its prerequisites
+    preMap = {i: [] for i in range(numCourses)}
+    for crs, pre in prerequisites:
+        preMap[crs].append(pre)
 
-    for a, b in prerequisites:
-        graph[b][a] = 1
+    # Store all courses along the current DFS path
+    visiting = set()
 
-    def dfs(start, visited):
-        if visited[start]:
+    def dfs(crs):
+        if crs in visiting:
+            # Cycle detected
             return False
-        
-        visited[start] = True
+        if preMap[crs] == []:
+            return True
 
-        for neighbor in range(numCourses):
-            if graph[start][neighbor] == 1:
-                if visited[neighbor]:
-                    return False
-                if not dfs(neighbor, visited):
-                    return False
-                
-        visited[start] = False
+        visiting.add(crs)
+        for pre in preMap[crs]:
+            if not dfs(pre):
+                return False
+        visiting.remove(crs)
+        preMap[crs] = []
         return True
-    
-    for course in range(numCourses):
-        if not dfs(course, visited):
+
+    for c in range(numCourses):
+        if not dfs(c):
             return False
-    
     return True
 
 if __name__ == "__main__":
