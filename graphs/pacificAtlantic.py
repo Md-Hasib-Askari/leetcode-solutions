@@ -29,6 +29,12 @@ def solve(heights: list[list[int]]) -> list[list[int]]:
             if pacific[r][c] and atlantic[r][c]:
                 res.append([r,c])
 
+    print("Pacific Reachable:")
+    for row in pacific:
+        print(row)
+    print("Atlantic Reachable:")
+    for row in atlantic:
+        print(row)
     return res
 
 if __name__ == "__main__":
