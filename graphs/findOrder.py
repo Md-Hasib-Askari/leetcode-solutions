@@ -1,30 +1,32 @@
+from collections import deque
+
 def solve(numCourses: int, prerequisites: list[list[int]]) -> list[int]:
-    prereq = {c: [] for c in range(numCourses)}
-    for crs, pre in prerequisites:
-        prereq[crs].append(pre)
+    graph = {i: [] for i in range(numCourses)}
+    in_out = [0]*numCourses
+    for a,b in prerequisites:
+        graph[a].append(b)
+        in_out[b] += 1
+    
+    q = deque()
+    for i in range(numCourses):
+        if in_out[i] == 0:
+            q.append(i)
+    
+    finish = 0
+    res = []
+    while q:
+        nd = q.popleft()
+        res.append(nd)
+        finish += 1
 
-    output = []
-    visit, cycle = set(), set()
+        for neighbor in graph[nd]:
+            in_out[neighbor] -= 1
+            if in_out[neighbor] == 0:
+                q.append(neighbor)
 
-    def dfs(crs):
-        if crs in cycle:
-            return False
-        if crs in visit:
-            return True
-
-        cycle.add(crs)
-        for pre in prereq[crs]:
-            if dfs(pre) == False:
-                return False
-        cycle.remove(crs)
-        visit.add(crs)
-        output.append(crs)
-        return True
-
-    for c in range(numCourses):
-        if dfs(c) == False:
-            return []
-    return output
+    if finish != numCourses:
+        return []
+    return res[::-1]
 
 
 if __name__ == "__main__":
